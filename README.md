@@ -14,5 +14,6 @@ http://localhost:8080
 ### Building
 
 ```
+npm install
 npm run build
 ```
