@@ -1,12 +1,11 @@
 import * as PIXI from 'pixi.js';
-import { Game } from '../constants'
+import { GAME } from '../constants'
 
 export default class Controller {
     constructor(w, h) {
         this.width = w;
         this.height = h;
         this.gameOver = false;
-
         this.stopCount = 0;
 
         this.canvas = this.getCanvasEl('game');
@@ -37,7 +36,6 @@ export default class Controller {
         return canvas;
     }
 
-
     handleBgOnClick(e) {
         if (this.gameOver) this.handleStartGame();
         e.stopPropagation();
@@ -51,10 +49,10 @@ export default class Controller {
     onChangeGameState (type) {
         switch (type) {
             case 'WON':
-                this.handleGameOver('You won!')
+                this.handleGameOver(GAME.wonTitle)
                 break;
             case 'LOST':
-                this.handleGameOver('You lost')
+                this.handleGameOver(GAME.lostTitle)
                 break;
             default:
                 break;
@@ -66,7 +64,7 @@ export default class Controller {
         this.button.changeBtnState(false);
         this.winning.showWinningText(text);
 
-        setTimeout(this.handleStartGame.bind(this), Game.winTextDealy)
+        setTimeout(this.handleStartGame.bind(this), GAME.winTextDealy)
     }
 
     handleStartGame() {

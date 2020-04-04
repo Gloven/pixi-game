@@ -1,5 +1,5 @@
-import { Scene } from './constants';
+import { SCENE } from './constants';
 
 import App from './app';
 
-new App(Scene.Width, Scene.Height);
+new App(SCENE.Width, SCENE.Height);

@@ -6,7 +6,6 @@ export default class Loder {
         this.loader = PIXI.Loader.shared;
         this.loadAssets();
         this.loader.load(this.handleOnload.bind(this));
-        
 	}
 	
 	loadAssets() {
@@ -14,7 +13,7 @@ export default class Loder {
     }
 
     handleOnload(loader, resources) {
-        this.loadAssetsFromJson(resources.assets.data)
+        // this.loadAssetsFromJson(resources.assets.data)
         this.onAssetsLoaded()
     }
 

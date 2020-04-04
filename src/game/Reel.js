@@ -1,10 +1,10 @@
 import * as PIXI from "pixi.js";
-
+import { REEL } from '../constants';
 export default class Reel {
 	constructor(turn, setWildId) {
         this.setWildId = setWildId;
-		this.width = 162;
-		this.height = 156;
+		this.width = REEL.w;
+		this.height = REEL.h;
 		this.cached = {};
 		this.animation = true;
 		this.position = {
@@ -89,7 +89,7 @@ export default class Reel {
 		
 		for (i = 0; i < this.singleReel.length; i++) {
 			let current = this.cached[`id_${i}`];
-			current.position.y -= 39;
+			current.position.y -= REEL.step;
 			if (current.position.y <= -this.height) {
 				current.position.y = (this.singleReel.length - 1) * this.height;
 			}

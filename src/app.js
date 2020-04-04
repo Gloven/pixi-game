@@ -1,4 +1,4 @@
-import { Scene }     from './constants';
+import { SCENE }     from './constants';
 import Loader        from './game/Loader';
 import Controller    from './game/Controller';
 import LoadingBg     from './game/LoadingBg';
@@ -11,8 +11,8 @@ import BlurredBg     from './game/BlurredBg';
 export default class App extends Controller {
     constructor(w,h) {
         super(w,h);
-        this.width = w || Scene.Width;
-        this.height = h || Scene.Height;
+        this.width = w || SCENE.Width;
+        this.height = h || SCENE.Height;
 
         this.createLoadingBg();
         new Loader(this.init.bind(this));
@@ -57,5 +57,4 @@ export default class App extends Controller {
         this.blurredBg = new BlurredBg();
         this.stageAdd(this.blurredBg.container);
     }
-
 };

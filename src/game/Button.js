@@ -2,7 +2,6 @@ import * as PIXI from 'pixi.js';
 
 export default class Button {
     constructor(onStartGame, position) {
-        this.size = 50;
         this.container = new PIXI.Container();
         this.position = position;
         this.isActive = true;

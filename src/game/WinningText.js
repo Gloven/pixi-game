@@ -1,5 +1,5 @@
 import * as  PIXI from 'pixi.js';
-import { Scene } from '../constants';
+import { SCENE } from '../constants';
 
 export default class WinningText {
     constructor() {
@@ -27,8 +27,8 @@ export default class WinningText {
 		this.winningContainer = new PIXI.Graphics();
 		this.winningContainer.beginFill(0x006400, 0.8);
 		this.winningContainer.drawRect(0, 0, 660, 300);
-		this.winningContainer.x = (Scene.Width / 2) - (this.winningContainer.width / 2) - 50;
-		this.winningContainer.y = (Scene.Height / 2) - (this.winningContainer.height / 2);
+		this.winningContainer.x = (SCENE.Width / 2) - (this.winningContainer.width / 2) - 50;
+		this.winningContainer.y = (SCENE.Height / 2) - (this.winningContainer.height / 2);
 		this.winningContainer.endFill();
       
 		this.text = new PIXI.Text('', this.textStyle);

@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
-import { Game } from '../constants'
-import { lerp, backout,  findDuplicates, countItemInArray } from '../utils';
+import { GAME, REEL_CONTAINER } from '../constants'
+import { findDuplicates, countItemInArray } from '../utils';
 import Reel from './Reel';
 
 export default class ReelContainer {
@@ -8,13 +8,13 @@ export default class ReelContainer {
 		this.x = 0;
         this.y = 52;
         this.onChangeGameState = onChangeGameState;
-		this.width = Game.Reels.Width;
-		this.height =  Game.Reels.Width;
-		this.delayStop = 1000;
-		this.columnPadding = 78;
-        this.reelPositions = 5;
-        this.reelIds = Game.reelIds;
-		this.reels = Array.from({ length: 3 }, () => new Reel(this.shuffleReelIds(), this.setWildId.bind(this)));
+		this.width = GAME.Reels.Width;
+		this.height =  GAME.Reels.Width;
+		this.delayStop = REEL_CONTAINER.delayStop;
+		this.columnPadding = REEL_CONTAINER.columnPadding;
+        this.reelPositions = REEL_CONTAINER.reelPositions;
+        this.reelIds = GAME.reelIds;
+		this.reels = Array.from({ length: GAME.countReels }, () => new Reel(this.shuffleReelIds(), this.setWildId.bind(this)));
 		this.container = new PIXI.Container();
 		this.container.x = this.x;
         this.container.y = this.y;
@@ -28,12 +28,10 @@ export default class ReelContainer {
     
 	addReel() {
         let i;
-
-        
 		for (i = 0; i < this.reels.length; i++) {
 			let reel = this.reels[i];
 			reel.delayStop = this.delayStop * i;
-            reel.container.position.x =  i * Game.Reels.Width + 82;
+            reel.container.position.x = i * GAME.Reels.Width + this.columnPadding;
 
             this.container.addChild(reel.container);
         }
@@ -61,10 +59,10 @@ export default class ReelContainer {
             countWilds = countItemInArray(result, this.wildId);
 
         switch (countWilds) {
-            case Game.countReels:
+            case GAME.countReels:
                 count = -1;  // GAME OVER
                 break;
-            case Game.countReels - 1:
+            case GAME.countReels - 1:
                 count = 1;  // WIN
             case 0:
                 if (duplicates.length == 2) count = 1;  // WIN
