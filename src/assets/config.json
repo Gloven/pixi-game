@@ -1,0 +1,15 @@
+{
+    "slotTextures": {
+        "WILD":"assets/WILD.png",
+        "SYM3":"assets/SYM3.png",
+        "SYM4":"assets/SYM4.png",
+        "SYM5":"assets/SYM5.png",
+        "SYM6":"assets/SYM6.png",
+        "SYM7":"assets/SYM7.png"
+    },
+    "other": {
+        "Background": "assets/BG.png",
+        "activeBtn": "assets/BTN_Spin.png",
+        "inactiveBtn":"assets/BTN_Spin_d.png"
+    }
+}
